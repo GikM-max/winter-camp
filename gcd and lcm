@@ -1,0 +1,33 @@
+#include<bits/stdc++.h>
+using namespace std;
+long long a, b;  // 定义全局变量
+
+long long gcd(long long x, long long y) {   // 采用递归的方式实现两个数的最大公约数
+  return y?gcd(y, x % y):x;
+}
+
+long long gcd (long long x, long long y) {  // 采用辗转相除法求两个数的最大公约数
+  if (x == y) return x;  // 两数相等的最大公约数为本身
+  if (x < y) swap(x, y);  // 交换两个数
+  int r;  // r 为余数
+  r = x % y;
+  while (r != 0) {
+    x = y;
+    y = r; 
+    r = x % y;
+  }
+  return y;  // 返回除数
+}
+
+long long lcm(long long x, long long y) {
+  return x * y / gcd(x, y);  // 最小公倍数 = a * b / (a和b的最大公约数)
+}
+int main()
+{
+  cin >> a >> b;
+  long long result_gcd, result_lcm;
+  result_gcd = gcd(a, b);
+  result_lcm = gcd(a, b);
+  cout << result_gcd << endl << result_lcm << endl;
+  return 0;
+}
