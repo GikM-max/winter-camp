@@ -1,0 +1,23 @@
+#include<iostream>
+using namespace std;
+int main() 
+{
+    int N, s=0;
+    cin >> N;
+    while(N) {
+        s = s * 10 + N % 10;
+        N = N / 10;
+    }
+    cout << s << endl;
+    return 0;
+}
+
+/* 例如 : N = 123
+*代码解释
+*第一步 s = 0
+*s = 0 * 10 + 123 % 10 = 3
+*N = 123 / 10 = 12
+*s = 3 * 10 + 12 % 10 = 32
+*N = 12 / 10 = 1
+*s = 32 * 10 + 1 % 10 = 321  到此将123反转为321
+*/
