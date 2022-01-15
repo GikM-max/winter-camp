@@ -1,0 +1,45 @@
+/* 洛谷 p1226
+*给你三个整数 a,b,pa,b,p，求 a^b mod p。
+*
+*
+*/
+
+
+//改进快速幂
+long long qmi(long long a, long long b, long p) {
+  long long res = 1 % p;
+  while(b) {
+    if (b & 1) {  // 按位与运算  二进制最后一位进行与运算 1101 和 1 与运算为奇数 1100 和 1 与运算 为偶数
+      res = (long long) (res * a) % p;
+    }
+    a = (long long)(a * a);
+    b >>= 1;  // 右移 相当于b / 2 
+  }
+  return res;
+}
+
+
+//基础法
+#include<iostream>
+#include<bits/stdc++.h>
+using namespace std;
+long long a, b, p;
+long long qmi(long a, long b, long p) {
+    long long res = 1 % p;  //定义初始值为1
+    while (b) {  // 当b不为0时
+        if(b % 2 == 1) {  // 判断b是否为奇偶 
+            res = (long long ) (res * a) % p;  // 为奇数res 需要先乘以底数a 2^13 res = res * 2 * 2 ^ 12
+        }
+        a = (long long)(a * a) % p;  // 偶数不需要
+        b = b / 2;
+    }
+    return res; 
+}
+int main()
+{
+    cin >> a >> b >> p;
+    cout << qmi(a, b, p) << endl;
+    return 0;
+}
+
+
