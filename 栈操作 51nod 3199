@@ -1,0 +1,30 @@
+/*  https://blog.csdn.net/qq_47705074/article/details/107746648?ops_request_misc=&request_id=&biz_id=102&utm_term=%E6%9C%89%E4%B8%80%E4%B8%AA%E5%88%9D%E5%A7%8B%E4%B8%BA%E7%A9%BA%E7%9A%84%E6%A0%88%EF%BC%8C%E6%88%91%E4%BB%AC%E5%AF%B9%E8%BF%99%E4%B8%AA%E6%A0%88%E8%BF%9B%E8%A1%8Cn%E6%AC%A1%E6%93%8D%E4%BD%9C%EF%BC%8C%E6%93%8D%E4%BD%9C%E5%85%B1%E5%88%86%E4%B8%BA2%E7%A7%8D&utm_medium=distribute.pc_search_result.none-task-blog-2~all~sobaiduweb~default-0-107746648.nonecase&spm=1018.2226.3001.4187
+51nod 3199 操作栈
+*/
+
+#include<bits/stdc++.h>
+using namespace std;
+int main()
+{
+  stack<int> a;  // 定义栈
+  int n;  // n次操作
+  cin >> n;
+  a.push(1);  // 将1压入栈中
+  while (n--) {
+    int x, y;  // x代表第一次或者第二次操作方式 ，  y代表输入的元素
+    cin >> x;
+    if (x == 1) {
+      cin >> y;
+      a.push(y);  // 将输入的y元素压入栈中
+    } else if (x == 2) {
+      if (a.size() == 1) {
+        cout << "empty" << endl;
+      } else {
+        cout << a.pop() << endl;  // 输出排出栈中的头元素
+        a.pop();  // 排除栈中的头元素
+      }
+    }
+  }
+  return 0;
+}
+
